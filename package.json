@@ -1,0 +1,15 @@
+{
+  "name": "cra-template-scmdashboard",
+  "version": "1.0.0",
+  "main": "template.json",
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": ""
+}

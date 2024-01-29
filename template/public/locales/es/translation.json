@@ -1,0 +1,12 @@
+{
+    "sign_on":{
+        "form": {
+            "email": "Correo",
+            "password": "Contraseña",
+            "sign_on": "Inicio de sesión",
+            "or": "O",
+            "sign_in_with": "Iniciar sesión con",
+            "version": "Versión"
+        }
+    }
+}

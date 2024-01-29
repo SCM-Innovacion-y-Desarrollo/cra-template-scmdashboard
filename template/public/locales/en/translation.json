@@ -1,0 +1,12 @@
+{
+    "sign_on":{
+        "form": {
+            "email": "Email",
+            "password": "Password",
+            "sign_on": "Sign On",
+            "or": "or",
+            "sign_in_with": "Sign in with",
+            "version": "Version"
+        }
+    }
+}
