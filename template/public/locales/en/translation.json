@@ -6,7 +6,11 @@
             "sign_on": "Sign On",
             "or": "or",
             "sign_in_with": "Sign in with",
-            "version": "Version"
+            "version": "Version",
+            "empty_email": "The email is required",
+            "empty_password": "The password is required",
+            "invalid_email": "The email format is not valid",
+            "invalid_password": "The password format is not valid"
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Container } from "@mui/material"
-import { Login } from "../components/Login"
+import { Login } from "../../components/Login"
 
-const SignOn = () => {
+const SignIn = () => {
 	return (
 		<>
 			<Container
@@ -19,4 +19,4 @@ const SignOn = () => {
 	)
 }
 
-export { SignOn }
+export { SignIn }

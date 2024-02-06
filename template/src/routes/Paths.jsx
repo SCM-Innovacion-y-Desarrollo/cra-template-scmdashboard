@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import React, { useContext } from 'react'
-import { GlobalContext } from '../GobalContext'
-import { SignOn } from '../pages/SignOn'
-import { Employees } from '../pages/Employees'
+import { GlobalContext } from '../GlobalContext'
+import { SignIn } from '../pages/common/SignIn'
+import { Employees } from '../pages/web/Employees'
+import { Employees as EmployeesMobile } from '../pages/mobile/Employees'
 
-export const Paths = () => {
+const WebPaths = () => {
     const { authenticated } = useContext(GlobalContext)
 
     return (
@@ -13,18 +14,62 @@ export const Paths = () => {
                 <Routes>
                     <Route
                         path='/'
-                        element={ authenticated ? <Employees /> : <Navigate to={'/signon'}/> }
+                        element={ authenticated ? <Navigate to={'/employees'}/> : <Navigate to={'/signin'}/> }
                         exact
                     />
 
                     <Route
-                        path='/signon'
-                        element={ authenticated ? <Navigate to={'/'}/> : <SignOn /> }
+                        path='/signin'
+                        element={ authenticated ? <Navigate to={'/'}/> : <SignIn /> }
                         exact
                     />
 
+                    <Route
+                        path='/employees'
+                        element={ authenticated ? <Employees /> : <Navigate to={'/signin'}/> }
+                        exact
+                    />
+
+                    <Route path='*' element={<>404 page not found</>}/>
                 </Routes>
             </Router>
         </>
     )
+}
+const MobilePaths = () => {
+    const { authenticated } = useContext(GlobalContext)
+
+    return (
+        <>
+            <Router>
+                <Routes>
+                    <Route
+                        path='/'
+                        element={ authenticated ? <Navigate to={'/employees'}/> : <Navigate to={'/signin'}/> }
+                        exact
+                    />
+
+                    <Route
+                        path='/signin'
+                        element={ authenticated ? <Navigate to={'/'}/> : <SignIn /> }
+                        exact
+                    />
+
+                    <Route
+                        path='/employees'
+                        element={ authenticated ? <EmployeesMobile /> : <Navigate to={'/signin'}/> }
+                        exact
+                    />
+
+                    <Route path='*' element={<>404 page not found</>}/>
+                </Routes>
+            </Router>
+        </>
+    )
+}
+
+
+export {
+    WebPaths,
+    MobilePaths
 }

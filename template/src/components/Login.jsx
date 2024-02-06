@@ -12,6 +12,34 @@ import {
 } from "../utils/Login";
 import { useTranslation } from "react-i18next";
 
+
+const getBackground = (theme) => {
+	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+	switch(theme){
+		case 'light':
+			return isMobile ? 'transparent' : grey[50]
+		case 'dark':
+			return isMobile ? 'transparent' : grey[900]
+		default:
+			return 'transparent'
+	}
+}
+
+const getBorder = (theme) => {
+	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+	switch(theme){
+		case 'light':
+			return isMobile ? 'none' : '1px solid rgba(0, 0, 0, 0.12)'
+		case 'dark':
+			return isMobile ? 'none' : '1px solid rgba(255, 255, 255, 0.12)'
+		default:
+			return 'none'
+	}
+
+}
+
 export const Login = ({redirect}) => {
 	const { t } = useTranslation()
 	
@@ -19,6 +47,7 @@ export const Login = ({redirect}) => {
 	const [password, setPassword] = useState({value: '', error: false, helperText: ''})
 
 	const [loading, setLoading] = useState(false)
+	
 
 	return (
 		<>
@@ -27,9 +56,8 @@ export const Login = ({redirect}) => {
 					width: 400, 
 					padding: 7, 
 					borderRadius: 5, 
-					border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.12)',
-					background: (theme) => theme.palette.mode === 'dark' ? grey[900] : grey[50],
-					//display: (theme) => console.log(theme),
+					border: (theme) => getBorder(theme.palette.mode),
+					background: (theme) => getBackground(theme.palette.mode),
 				}}
 			>
 				<form onSubmit={(event) => logging(event, setLoading, email, password, redirect)}>
@@ -64,7 +92,7 @@ export const Login = ({redirect}) => {
 								setEmail({
 									value: event.target.value, 
 									error: true, 
-									helperText: event.target.value ? 'The email format is not valid' : 'The email is required'
+									helperText: event.target.value ? t('sign_on.form.invalid_email') : t('sign_on.form.empty_email')
 								})
 							}
 						}}
@@ -92,7 +120,7 @@ export const Login = ({redirect}) => {
 								setPassword({
 									value: event.target.value, 
 									error: true, 
-									helperText: event.target.value ? 'The password format is not valid' : 'The password is required'
+									helperText: event.target.value ? t('sign_on.form.invalid_password') : t('sign_on.form.empty_password')
 								})
 							}
 						}}

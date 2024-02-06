@@ -6,7 +6,11 @@
             "sign_on": "Inicio de sesión",
             "or": "O",
             "sign_in_with": "Iniciar sesión con",
-            "version": "Versión"
+            "version": "Versión",
+            "empty_email": "El correo es requerido",
+            "empty_password": "La contraseña es requerida",
+            "invalid_email": "El formato del correo no es válido",
+            "invalid_password": "El formato de la contraseña no es válida"
         }
     }
 }
